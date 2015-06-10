@@ -1,0 +1,2 @@
+require 'collaborative_filtering/version'
+require 'collaborative_filtering/collaborative_filtering'
