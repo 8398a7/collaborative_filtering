@@ -31,6 +31,38 @@ require 'collaborative_filtering'
 CollaborativeFiltering.all_sample
 ```
 
+```
+        //////////////////////////////////////////////////////////////
+        // this source exists lib/collaborative_filtering/sample.rb //
+        //////////////////////////////////////////////////////////////
+      
+{
+    "Yamada"=>{"Curry"=>2.5, "Ramen"=>3.5, "Fried rice"=>3.0, "Sushi"=>3.5, "Beef bowl"=>2.5, "Wheat noodle"=>3.0},        
+    "Tanaka"=>{"Curry"=>3.0, "Ramen"=>3.5, "Fried rice"=>1.5, "Sushi"=>5.0, "Wheat noodle"=>3.0, "Beef bowl"=>3.5}, 
+    "Sato"=>{"Curry"=>2.5, "Ramen"=>3.0, "Sushi"=>3.5, "Wheat noodle"=>4.0},
+    "Nakamura"=>{"Ramen"=>3.5, "Fried rice"=>3.0, "Wheat noodle"=>4.5, "Sushi"=>4.0, "Beef bowl"=>2.5}, 
+    "Kawamura"=>{"Curry"=>3.0, "Ramen"=>4.0, "Fried rice"=>2.0, "Sushi"=>3.0, "Wheat noodle"=>3.0, "Beef bowl"=>2.0}, 
+    "Suzuki"=>{"Curry"=>3.0, "Ramen"=>4.0, "Wheat noodle"=>3.0, "Sushi"=>5.0, "Beef bowl"=>3.5}, 
+    "Shimobayashi"=>{"Ramen"=>4.5, "Beef bowl"=>1.0, "Sushi"=>4.0}
+}
+
+write like this -> CollaborativeFiltering.sim_distance(SAMPLE, 'Yamada', 'Tanaka')
+0.14814814814814814
+
+write like this -> CollaborativeFiltering.sim_pearson(SAMPLE, 'Yamada', 'Tanaka')
+0.39605901719066977
+
+write like this -> CollaborativeFiltering.top_matches(SAMPLE, 'Shimobayashi')
+[[0.9912407071619299, "Yamada"], [0.9244734516419049, "Kawamura"], [0.8934051474415647, "Nakamura"], [0.66284898035987, "Suzuki"], [0.38124642583151164, "Tanaka"]]
+
+write like this -> CollaborativeFiltering.get_recommendations(SAMPLE, 'Shimobayashi')
+[[3.3477895267131017, "Wheat noodle"], [2.8325499182641614, "Curry"], [2.530980703765565, "Fried rice"]]
+
+write like this -> menu = CollaborativeFiltering.transform_prefs(SAMPLE)
+write like this -> CollaborativeFiltering.top_matches(menu, 'Sushi')
+[[0.6579516949597695, "Beef bowl"], [0.4879500364742689, "Curry"], [0.11180339887498941, "Ramen"], [-0.1798471947990544, "Wheat noodle"], [-0.42289003161103106, "Fried rice"]]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
