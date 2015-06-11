@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CollaborativeFiltering do
-  CORRECT = {
+  TEST_DATA = {
     'Yamada' => {
       'Curry'        => 2.5,
       'Ramen'        => 3.5,
@@ -58,25 +58,25 @@ describe CollaborativeFiltering do
   end
 
   it "the degree of similarity 'Yamada' and 'Tanaka' (distance)" do
-    expect(CollaborativeFiltering.sim_distance(CORRECT, 'Yamada', 'Tanaka')).to be 0.14814814814814814
+    expect(CollaborativeFiltering.sim_distance(TEST_DATA, 'Yamada', 'Tanaka')).to be 0.14814814814814814
   end
   it "the degree of similarity 'Yamada' and 'Tanaka' (pearson)" do
-    expect(CollaborativeFiltering.sim_pearson(CORRECT, 'Yamada', 'Tanaka')).to be 0.39605901719066977
+    expect(CollaborativeFiltering.sim_pearson(TEST_DATA, 'Yamada', 'Tanaka')).to be 0.39605901719066977
   end
 
   it 'users who are similar to Shimobayashi' do
     ret = [[0.9912407071619299, 'Yamada'], [0.9244734516419049, 'Kawamura'], [0.8934051474415647, 'Nakamura'], [0.66284898035987, 'Suzuki'], [0.38124642583151164, 'Tanaka']]
-    expect(CollaborativeFiltering.top_matches(CORRECT, 'Shimobayashi')).to match ret
+    expect(CollaborativeFiltering.top_matches(TEST_DATA, 'Shimobayashi')).to match ret
   end
 
   it 'the menu of recommended for Shimobayashi' do
     ret = [[3.3477895267131017, 'Wheat noodle'], [2.8325499182641614, 'Curry'], [2.530980703765565, 'Fried rice']]
-    expect(CollaborativeFiltering.get_recommendations(CORRECT, 'Shimobayashi')).to match ret
+    expect(CollaborativeFiltering.get_recommendations(TEST_DATA, 'Shimobayashi')).to match ret
   end
 
   it 'the menu which is similar to Sushi' do
     ret = [[0.6579516949597695, 'Beef bowl'], [0.4879500364742689, 'Curry'], [0.11180339887498941, 'Ramen'], [-0.1798471947990544, 'Wheat noodle'], [-0.42289003161103106, 'Fried rice']]
-    menu = CollaborativeFiltering.transform_prefs(CORRECT)
+    menu = CollaborativeFiltering.transform_prefs(TEST_DATA)
     expect(CollaborativeFiltering.top_matches(menu, 'Sushi')).to match ret
   end
 end
