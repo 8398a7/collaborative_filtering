@@ -36,7 +36,7 @@ CollaborativeFiltering::Sample.all_sample
         // this source exists lib/collaborative_filtering/sample.rb //
         //////////////////////////////////////////////////////////////
       
-{
+SAMPLE = {
     "Yamada"=>{"Curry"=>2.5, "Ramen"=>3.5, "Fried rice"=>3.0, "Sushi"=>3.5, "Beef bowl"=>2.5, "Wheat noodle"=>3.0},        
     "Tanaka"=>{"Curry"=>3.0, "Ramen"=>3.5, "Fried rice"=>1.5, "Sushi"=>5.0, "Wheat noodle"=>3.0, "Beef bowl"=>3.5}, 
     "Sato"=>{"Curry"=>2.5, "Ramen"=>3.0, "Sushi"=>3.5, "Wheat noodle"=>4.0},
