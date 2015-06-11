@@ -28,7 +28,7 @@ Or install it yourself as:
 ```ruby
 require 'collaborative_filtering'
 
-CollaborativeFiltering.all_sample
+CollaborativeFiltering::Sample.all_sample
 ```
 
 ```
