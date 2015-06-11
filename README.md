@@ -22,6 +22,13 @@ And then execute:
 Or install it yourself as:
 
     $ gem install collaborative_filtering
+    
+## Requirements
+
+collaborative_filtering supports the following Ruby versions:
+
+  - 2.0.0
+  - 2.1.0
 
 ## Usage
 
